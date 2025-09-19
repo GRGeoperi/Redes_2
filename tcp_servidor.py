@@ -14,13 +14,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPServerSocket:
     #Crear objeto thread (client_conn)
     with Client_conn:
         print("Conectado a", Client_addr)
-        while True:
-            print("Esperando a recibir datos... ")
-            data = Client_conn.recv(buffer_size)
-            if not data:
-                print("No se recibieron más datos. Fin de la transferencia.")
-                break
-            print ("Recibido,", len(data), "bytes de", Client_addr)
+        with open("hamlet_recibido.txt", "wb") as f:
+            while True:
+                print("Esperando a recibir datos... ")
+                data = Client_conn.recv(buffer_size)
+                if not data:
+                    print("No se recibieron más datos. Fin de la transferencia.")
+                    break
+                print ("Recibido,", len(data), "bytes de", Client_addr)
+                f.write(data)
         # Enviar confirmación después de recibir todo el archivo
         mensaje_confirmacion = "Archivo recibido correctamente".encode()
         Client_conn.sendall(mensaje_confirmacion)
