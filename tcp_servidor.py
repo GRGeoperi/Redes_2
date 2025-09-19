@@ -17,12 +17,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPServerSocket:
         while True:
             print("Esperando a recibir datos... ")
             data = Client_conn.recv(buffer_size)
-            print ("Recibido,", data,"   de ")
             if not data:
+                print("No se recibieron más datos. Fin de la transferencia.")
                 break
-            print("Enviando respuesta a", Client_addr)
-            # Enviar solo una confirmación al finalizar la recepción
-            break
+            print ("Recibido,", len(data), "bytes de", Client_addr)
         # Enviar confirmación después de recibir todo el archivo
         mensaje_confirmacion = "Archivo recibido correctamente".encode()
         Client_conn.sendall(mensaje_confirmacion)
