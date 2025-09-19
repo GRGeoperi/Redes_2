@@ -1,10 +1,10 @@
 #!/usr/bin python3
 import socket
 
-HOST = "localhost"  # Hostname o dirección IP del servidor
+HOST = "192.168.1.102"  # Hostname o dirección IP del servidor
 PORT = 65432  # Puerto del servidor
 buffer_size = 1024
-file_path = "/hamlet.txt"  # Ruta absoluta al archivo
+file_path = "hamlet.txt"  # Ruta absoluta al archivo
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPClientSocket:
     TCPClientSocket.connect((HOST, PORT))

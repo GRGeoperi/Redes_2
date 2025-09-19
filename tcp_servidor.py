@@ -14,7 +14,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPServerSocket:
     #Crear objeto thread (client_conn)
     with Client_conn:
         print("Conectado a", Client_addr)
-        with open("hamlet_recibido.txt", "wb") as f:
+        with open("hamlet_recibido_tcp.txt", "wb") as f:
             while True:
                 print("Esperando a recibir datos... ")
                 data = Client_conn.recv(buffer_size)
