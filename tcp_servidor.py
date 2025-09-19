@@ -21,4 +21,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPServerSocket:
             if not data:
                 break
             print("Enviando respuesta a", Client_addr)
-            Client_conn.sendall(data)
+            # Enviar solo una confirmación al finalizar la recepción
+            break
+        # Enviar confirmación después de recibir todo el archivo
+        mensaje_confirmacion = "Archivo recibido correctamente".encode()
+        Client_conn.sendall(mensaje_confirmacion)
