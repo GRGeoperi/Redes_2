@@ -1,7 +1,7 @@
 #!/usr/bin python3
 import socket
 
-HOST = "192.168.1.102"  # Hostname o dirección IP del servidor
+HOST = "localhost"  # Hostname o dirección IP del servidor
 PORT = 65432  # Puerto del servidor
 buffer_size = 1024
 file_path = "hamlet.txt"  # Ruta absoluta al archivo

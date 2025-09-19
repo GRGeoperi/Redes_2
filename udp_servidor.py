@@ -17,5 +17,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as UDPServerSocket:
                 # Enviar confirmación al cliente
                 UDPServerSocket.sendto(bytesToSend, address)
                 break
-            print("Recibido {} bytes de {}".format(len(data), address))
             f.write(data)
