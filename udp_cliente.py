@@ -5,7 +5,7 @@ HOST = "10.100.84.82"  # El hostname o IP del servidor
 PORT = 54321  # El puerto usado por el servidor
 serverAddressPort = (HOST, PORT)
 bufferSize = 1024
-file_path = "hamlet.txt"
+file_path = "MobyDick.txt"
 
 # Crea un socket UDP del lado del cliente
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as UDPClientSocket:

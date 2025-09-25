@@ -6,11 +6,11 @@ import time
 HOST = "10.100.84.82"  # Hostname o dirección IP del servidor
 PORT = 65432  # Puerto del servidor
 buffer_size = 1024
-file_path = "hamlet.txt"  # Ruta absoluta al archivo
+file_path = "MobyDick.txt"  # Ruta absoluta al archivo
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPClientSocket:
     TCPClientSocket.connect((HOST, PORT))
-    print("Enviando archivo hamlet.txt...")
+    print("Enviando archivo MobyDick.txt...")
     total_sent = 0
     start_time = time.time()
     with open(file_path, "rb") as f:

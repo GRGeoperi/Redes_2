@@ -18,7 +18,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPServerSocket:
         print("Conectado a", Client_addr)
         total_received = 0
         start_time = time.time()
-        with open("hamlet_recibido_tcp.txt", "wb") as f:
+        with open("MobyDick_recibido_tcp.txt", "wb") as f:
             while True:
                 data = Client_conn.recv(buffer_size)
                 if not data:
@@ -31,7 +31,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPServerSocket:
         print(f"Tiempo de transferencia: {end_time - start_time:.4f} segundos")
         # Comprobar si el archivo recibido es igual al original
         try:
-            iguales = filecmp.cmp("hamlet_recibido_tcp.txt", "hamlet.txt", shallow=False)
+            iguales = filecmp.cmp("MobyDick_recibido_tcp.txt", "MobyDick.txt", shallow=False)
             if iguales:
                 print("El archivo recibido es idéntico al original.")
             else:
