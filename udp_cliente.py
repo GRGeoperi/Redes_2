@@ -1,7 +1,7 @@
 import socket
 import time
 
-HOST = "localhost"  # El hostname o IP del servidor
+HOST = "10.100.84.82"  # El hostname o IP del servidor
 PORT = 54321  # El puerto usado por el servidor
 serverAddressPort = (HOST, PORT)
 bufferSize = 1024

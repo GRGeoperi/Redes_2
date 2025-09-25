@@ -3,7 +3,7 @@
 import socket
 import time
 
-HOST = "localhost"  # Hostname o dirección IP del servidor
+HOST = "10.100.84.82"  # Hostname o dirección IP del servidor
 PORT = 65432  # Puerto del servidor
 buffer_size = 1024
 file_path = "hamlet.txt"  # Ruta absoluta al archivo
