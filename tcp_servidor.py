@@ -1,3 +1,4 @@
+import hashlib
 #!/usr/bin python3
 
 import socket
@@ -38,6 +39,30 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as TCPServerSocket:
                 print("El archivo recibido NO es idéntico al original.")
         except Exception as e:
             print(f"No se pudo comparar archivos: {e}")
+        # Calcular e imprimir checksum MD5 y SHA256 de ambos archivos
+        def calcular_checksum(path, algoritmo):
+            h = hashlib.new(algoritmo)
+            with open(path, 'rb') as f:
+                while True:
+                    chunk = f.read(8192)
+                    if not chunk:
+                        break
+                    h.update(chunk)
+            return h.hexdigest()
+
+        try:
+            print("\nChecksums:")
+            for alg in ["md5", "sha256"]:
+                orig = calcular_checksum("MobyDick.txt", alg)
+                rec = calcular_checksum("MobyDick_recibido_tcp.txt", alg)
+                print(f"{alg.upper()} original:  {orig}")
+                print(f"{alg.upper()} recibido: {rec}")
+                if orig == rec:
+                    print(f"Los archivos son idénticos según {alg.upper()}\n")
+                else:
+                    print(f"Los archivos son diferentes según {alg.upper()}\n")
+        except Exception as e:
+            print(f"No se pudo calcular el checksum: {e}")
         # Enviar confirmación después de recibir todo el archivo
         mensaje_confirmacion = "Archivo recibido correctamente".encode()
         Client_conn.sendall(mensaje_confirmacion)
