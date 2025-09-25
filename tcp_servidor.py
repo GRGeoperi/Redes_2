@@ -4,7 +4,7 @@ import socket
 import time
 import filecmp
 
-HOST = "localhost"  # Direccion de la interfaz de loopback estándar (localhost)
+HOST = "10.100.84.82"  # Direccion de la interfaz de loopback estándar (localhost)
 PORT = 65432 # Puerto que usa el cliente  (los puertos sin provilegios son > 1023)
 buffer_size = 1024
 

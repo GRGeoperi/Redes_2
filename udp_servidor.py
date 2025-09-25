@@ -4,7 +4,7 @@ import os
 import time
 import filecmp
 
-HOST = "localhost"  # El hostname o IP del servidor
+HOST = "10.100.84.82"  # El hostname o IP del servidor
 PORT = 54321  # El puerto que usa el servidor
 bufferSize = 1024
 msgFromServer = "Archivo recibido correctamente (UDP)"
