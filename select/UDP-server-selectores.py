@@ -8,15 +8,19 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(("localhost", 12345))  # servidor escuchando en puerto 9999
 sock.setblocking(False)
 
-# Función que maneja eventos de lectura
-def read(sock, mask):
-    data, addr = sock.recvfrom(1024)  # recibe datos UDP
-    print("Recibido:", data.decode(), "de", addr)
-    # responder
-    sock.sendto(b"ACK: " + data, addr)
 
-# Registramos el socket para eventos de lectura
-sel.register(sock, selectors.EVENT_READ, read)
+# Función que maneja eventos de lectura y escritura
+def eventos(sock, mask):
+    if mask & selectors.EVENT_READ:
+        data, addr = sock.recvfrom(1024)  # recibe datos UDP
+        print("Recibido:", data.decode(), "de", addr)
+        # responder
+        sock.sendto(b"ACK: " + data, addr)
+    if mask & selectors.EVENT_WRITE:
+        print("El socket está listo para escribir.")
+
+# Registramos el socket para eventos de lectura y escritura con la misma función
+sel.register(sock, selectors.EVENT_READ | selectors.EVENT_WRITE, eventos)
 
 print("Servidor UDP escuchando ")
 try:
